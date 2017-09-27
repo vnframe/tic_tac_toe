@@ -33,4 +33,21 @@ class Test_Tic_Tac_Toe < Minitest::Test
         grid = ["x","o","x","x","o","o","x","o","x"]
         assert_equal(true, winner?(grid))
     end
+    def test_board_win_2
+        grid = ["1","x","3","4","x","6","7","x","9"]
+        assert_equal(true, winner?(grid))
+    end
+    def test_board_win_3
+        grid = ["o","o","o","4","5","6","7","8","9"]
+        assert_equal(true, winner?(grid))
+    end
+    def test_board_false
+        grid = ["o","x","o","4","5","6","7","8","9"]
+        assert_equal(false, winner?(grid))
+    end
+    def test_cross_win
+        grid = ["1","2","x","4","x","6","x","8","9"]
+        assert_equal(true, winner?(grid))
+    end
+        
 end
