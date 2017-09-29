@@ -19,7 +19,7 @@ class Test_Tic_Tac_Toe < Minitest::Test
         assert_equal(true, open_spot?(grid, pos))
     end
     def  test_current_player
-        assert_equal( "X, it is your turn", switch_player("playerX"))
+        assert_equal( "playerO", switch_player("playerX"))
     end
     def test_board_is_full
         grid =["x","o","x","x","o","o","x","o","x"]
