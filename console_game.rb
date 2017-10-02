@@ -6,7 +6,7 @@ class ConsoleGame
         @player_1 = get_player1
         @player_2 = get_player2
         @board = Board.new  
-        @active_player = player_1
+        @active_player = player_2
     end
     def intro
         puts 'Welcome to tic-tac-toe'
@@ -38,13 +38,14 @@ class ConsoleGame
             update_board
         end
     end
+
     def change_player
-        if active_player == player_1
-            @active_player = player_2
-        else
-            @active_player = player_1
-        end 
+    if active_player == player_1
+         @active_player = player_2
+    else
+        @active_player = player_1
     end
+end
     def check_winner
         if board.winner?(active_player.marker)
             true
