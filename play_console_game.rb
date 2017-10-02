@@ -4,9 +4,9 @@ game = ConsoleGame.new
 
 game.intro
 
+game.display_board
 until game.check_winner || game.board.full_board?
-    game.display_board
-    game.update_board
+        game.update_board
     if game.check_winner == false 
         game.change_player
         game.display_board

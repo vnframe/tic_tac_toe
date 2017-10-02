@@ -8,7 +8,7 @@ class Board
         ttt_board[position] = marker
     end
     def valid_position?(position)
-        if ttt_board[position] == ''
+        if ttt_board[position] == '' #tests to see if any positions are empty
             true
         else
             false

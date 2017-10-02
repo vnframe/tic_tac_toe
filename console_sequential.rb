@@ -6,7 +6,7 @@ class Sequential
         end
         def get_move(ttt_board)
     
-            ttt_board.index('')
+            ttt_board.index('') #places marker on next open space in array
         end
     
     end
