@@ -9,4 +9,5 @@ class Test_Sequential < Minitest::Test
         seq_var = Sequential.new("X")
         assert_equal(0, seq_var.get_move(['','','', '','','','','','']))
     end
+    
 end
