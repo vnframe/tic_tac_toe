@@ -18,19 +18,17 @@ class Unbeatable
         ]
         puts "#{possible_combos[1][2]}"
         winner = 0
-        win_pos = 0
+        move = 0
+        index=0
         possible_moves.each_with_index do |wins, index|
             #p "#{wins} are here"
             if wins.count(marker) == 2 && wins.include?('')
+                p index
                 winner = wins.index('')
-        #       if wins.all?{|pos| pos.include?("X") || pos.include?("O")}
-        # else
-        #     false
-        # end
-            end
+                move = possible_combos[index][winner]
             end
             
-        end
-    winner
+       end
+   move
     end
 end
