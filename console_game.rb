@@ -6,7 +6,7 @@ class ConsoleGame
     def initialize
         @player_1 = get_player1
         @player_2 = get_player2
-        @board = Board.new  
+        @board = Board.new  #creates clean board"
         @active_player = player_2
     end
     def intro
