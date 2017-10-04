@@ -9,4 +9,8 @@ class TestUnbeatable < Minitest::Test
         impossible_var = Unbeatable.new('X')
         assert_equal(1, impossible_var.get_move(['O','','O','','','','','','']))
     end
+    def test_center
+        impossible_var = Unbeatable.new('X')
+        assert_equal(4, impossible_var.get_move(["", "", "", "", "", "", "", "", ""]))
+    end
 end
