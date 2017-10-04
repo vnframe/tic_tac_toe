@@ -14,7 +14,16 @@ class Unbeatable
             end        
     end
     def win_block_move(ttt_board, player)
-        possible_moves = [[ttt_board[0],ttt_board[1], ttt_board[2]], [ttt_board[3], ttt_board[4], ttt_board[5]]]
+        possible_moves =  [
+            [ttt_board[0],ttt_board[1],ttt_board[2]],
+            [ttt_board[3],ttt_board[4],ttt_board[5]],
+            [ttt_board[6],ttt_board[7],ttt_board[8]],
+            [ttt_board[0],ttt_board[3],ttt_board[6]],
+            [ttt_board[1],ttt_board[4],ttt_board[7]],
+            [ttt_board[2],ttt_board[5],ttt_board[8]],
+            [ttt_board[0],ttt_board[4],ttt_board[8]],
+            [ttt_board[2],ttt_board[4],ttt_board[6]],
+            ]
         possible_combos = [
             [0, 1, 2],
             [3, 4, 5],
@@ -25,16 +34,14 @@ class Unbeatable
             [0, 4, 8],
             [2, 4, 6]
         ]
-        puts "#{possible_combos[1][2]}"
-        winner = 0
-        move = 0
-        index=0
-        possible_moves.each_with_index do |wins, index|
+        #puts "#{possible_combos[1][2]}"
+        move = 56
+        possible_moves.each_with_index do |winning_line, index_of_array|
             #p "#{wins} are here"
-            if wins.count(player) == 2 && wins.include?('')
-                p index
-                winner = wins.index('')
-                move = possible_combos[index][winner]
+            if winning_line.count(player) == 2 && winning_line.count('') == 1
+                p index_of_array
+                winner = winning_line.index('')
+                move = possible_combos[index_of_array][winner]
             else 
                 move
             end
@@ -43,10 +50,18 @@ class Unbeatable
         move
     end
     def get_move(ttt_board)
+        move = 50
+             if  win(ttt_board) <= 8
+                 move = win(ttt_board) 
 
-     win(ttt_board)
-     block(ttt_board)
-    end
+             elsif  block(ttt_board) <= 8
+                move = block(ttt_board) 
+             else
+                move = ttt_board.index("")
+             end
+            #puts move
+            move
+    end 
     def win(ttt_board)
         win_block_move(ttt_board, marker)
     end
