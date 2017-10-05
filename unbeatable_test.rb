@@ -13,4 +13,20 @@ class TestUnbeatable < Minitest::Test
         impossible_var = Unbeatable.new('X')
         assert_equal(4, impossible_var.get_move(["", "", "", "", "", "", "", "", ""]))
     end
+    def test_take_corner
+        impossible_var = Unbeatable.new('X')
+        assert_equal(0, impossible_var.take_corner(["", "", "", "", "", "", "", "", ""]))
+    end
+    def test_take_corner_2
+        impossible_var = Unbeatable.new('X')
+        assert_equal(2, impossible_var.take_corner(["O", "", "", "", "", "", "", "", ""]))
+    end
+    def test_take_corner_3
+        impossible_var = Unbeatable.new('X')
+        assert_equal(6, impossible_var.take_corner(["O", "", "X", "", "", "", "", "", ""]))
+    end
+    def test_take_corner_4
+        impossible_var = Unbeatable.new('X')
+        assert_equal(8, impossible_var.take_corner(["O", "", "X", "", "", "", "X", "", ""]))
+    end
 end

@@ -58,6 +58,8 @@ class Unbeatable
                 move = block(ttt_board) 
              elsif take_center(ttt_board) <= 8
                 move = take_center(ttt_board)
+             elsif take_corner(ttt_board) <= 8
+                move = take_corner(ttt_board)
              else
                 move = ttt_board.index("")
              end
@@ -75,6 +77,18 @@ class Unbeatable
             move = 4
         else
             move = 56
+        end
+    end
+    def take_corner(ttt_board)
+        if ttt_board[0] == ''
+            move = 0
+        elsif ttt_board[2] == ''
+            move = 2
+        elsif ttt_board[6] == ''
+            move = 6
+        elsif ttt_board[8] == ''
+            move = 8
+        else 
         end
     end
 end
