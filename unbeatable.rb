@@ -51,18 +51,20 @@ class Unbeatable
     end
     def get_move(ttt_board)
         move = 50
-             if  win(ttt_board) <= 8
+            if  win(ttt_board) <= 8
                  move = win(ttt_board) 
 
-             elsif  block(ttt_board) <= 8
+            elsif  block(ttt_board) <= 8
                 move = block(ttt_board) 
-             elsif take_center(ttt_board) <= 8
-                move = take_center(ttt_board)
-             elsif take_corner(ttt_board) <= 8
+            elsif take_center(ttt_board) <= 8
+                move = take_center(ttt_board)  
+            elsif take_corner(ttt_board) <= 8
                 move = take_corner(ttt_board)
-             else
-                move = ttt_board.index("")
-             end
+            
+            else
+                move = ttt_board.index("") 
+            
+            end
             #puts move
             move
     end 
@@ -89,6 +91,7 @@ class Unbeatable
         elsif ttt_board[8] == ''
             move = 8
         else 
+            move = 56
         end
     end
 end

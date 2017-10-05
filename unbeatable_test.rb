@@ -29,4 +29,8 @@ class TestUnbeatable < Minitest::Test
         impossible_var = Unbeatable.new('X')
         assert_equal(8, impossible_var.take_corner(["O", "", "X", "", "", "", "X", "", ""]))
     end
+    def test_take_corner_in_func
+        impossible_var = Unbeatable.new('X')
+        assert_equal(0, impossible_var.get_move(["", "", "", "", "O", "", "", "", ""]))
+    end
 end

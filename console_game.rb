@@ -2,6 +2,7 @@ require_relative "tictactoe.rb"
 require_relative "console_human.rb"
 require_relative "console_sequential.rb"
 require_relative "random.rb"
+require_relative "unbeatable.rb"
 class ConsoleGame
     attr_accessor :player_1, :player_2, :board, :active_player, :move, :input1, :input2
     def initialize
@@ -61,6 +62,7 @@ end
             1 - Human
             2 - Sequential
             3 - Random
+            4 - Unbeatable
             """
         @input1 = gets.chomp.to_i
         if input1 == 1
@@ -69,6 +71,8 @@ end
             @player_1 = Sequential.new('X')
         elsif input1 == 3
             @player_1 = Random.new('X')
+        elsif input1 == 4 
+            @player_1 = Unbeatable.new('X')
         else
             puts "Invalid input, please input 1, 2, or 3"
             get_player1
@@ -80,6 +84,7 @@ end
             1 - Human
             2 - Easy Computer
             3 - Medium Computer
+            4 - Unbeatable
             """
         @input2 = gets.chomp.to_i
         if input2 == 1
@@ -88,6 +93,8 @@ end
             @player_2 = Sequential.new('O')
         elsif input2 == 3
             @player_2 = Random.new('O')
+        elsif input2 == 4 
+            @player_2 = Unbeatable.new('O')
         else
             puts "Invalid input"
             get_player2
