@@ -41,4 +41,8 @@ class TestUnbeatable < Minitest::Test
 		impossible_var = Unbeatable.new("X")
 		assert_equal(3, impossible_var.block_fork(["O", " ", " ", " ", "X", " ", " ", " ", "O"]))
     end
+    def test_X_blocks_O_corners_opposite_in_func
+		impossible_var = Unbeatable.new("X")
+		assert_equal(3, impossible_var.get_move(["O", " ", " ", " ", "X", " ", " ", " ", "O"]))
+    end
 end

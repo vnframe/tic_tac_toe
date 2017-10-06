@@ -159,14 +159,14 @@ move
 
         if ttt_board == ["", "", opponent, "", marker, "", opponent, "", ""]
                         move = 3
-        elsif ttt_board == [opponent, "", "", "", marker, "", "", "", opponent]
+        elsif ttt_board == [opponent, " ", " ", " ", marker, " ", " ", " ", opponent]
             move = 3
         elsif intersections.detect { |match| intersections.count(match) > 1 } == nil
             move = 56
-    else 
+        else 
         move = intersections.detect { |match| intersections.count(match) > 1 }
         end
-    move
+        move
     end
                     
             
