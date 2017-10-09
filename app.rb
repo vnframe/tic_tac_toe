@@ -48,5 +48,7 @@ get "/board" do
 end
 
 get "/move" do 
-    erb :move, locals: {player1: session[:player1], player2: session[:player2], active: session[:active].marker, board: session[:board]}
+    player_move = session[:active].get_move(session[:board].ttt_board)
+    session[:board].update_position(move, session[:active].marker)
+    redirect '/check_board'
 end
