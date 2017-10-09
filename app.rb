@@ -38,17 +38,23 @@ post "/select" do
     session[:active] = session[:player1]
     if session[:human1] == "yes"
         redirect "/board"
+    elsif session[:human2] == "yes"
+        redirect "/board"
     else 
         redirect "/move"
     end
 end
 
 get "/board" do
-    erb :board, locals: {player1: session[:player1], player2: session[:player2], active: session[:active].marker, board: session[:board]}
+    erb :board_page, locals: {player1: session[:player1], player2: session[:player2], active: session[:active].marker, board: session[:board]}
 end
 
 get "/move" do 
     player_move = session[:active].get_move(session[:board].ttt_board)
-    session[:board].update_position(move, session[:active].marker)
+    session[:board].update_position(player_move, session[:active].marker)
     redirect '/check_board'
+end
+
+get "/check_board" do
+erb :check_over, locals: {player1: session[:player1], player2: session[:player2], active: session[:active].marker, board: session[:board], move: session[:player_move]}
 end
