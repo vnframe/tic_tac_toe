@@ -12,7 +12,7 @@ get "/" do
 end
 post "/select" do
     session[:player1_style] = params[:player1]
-    session[:player1_style] = params[:player2]
+    session[:player2_style] = params[:player2]
     session[:human1] = "no"
     session[:human2] = "no"
     if session[:player1_style] == 'Human'
@@ -55,6 +55,17 @@ get "/move" do
     redirect '/check_board'
 end
 
+
 get "/check_board" do
-erb :check_over, locals: {player1: session[:player1], player2: session[:player2], active: session[:active].marker, board: session[:board], move: session[:player_move]}
+    if session[:board].winner?(session[:active].marker)
+        end_game = "#{session[:active].marker} wins this round!"
+        erb :check_over, locals: {board: session[:board], end_game: end_game}
+    elsif session[:board] == full_board?
+        end_game = "It's a cat's game!"
+        erb :check_over, locals: {board: session[:board], end_game: end_game}
+    elsif session[:active] == session[:player1]
+        session[:active] = session[:player2]
+    else
+        session[:active] = session[:player1]
+end
 end

@@ -4,6 +4,29 @@ class Unbeatable
         @marker = marker
         @opponent = get_opponent(@marker)
     end
+    def get_move(ttt_board)
+        move = 50
+            if  win(ttt_board) <= 8
+                 move = win(ttt_board) 
+
+            elsif  block(ttt_board) <= 8
+                move = block(ttt_board) 
+            elsif block_fork(ttt_board) <= 8
+                move = block_fork(ttt_board)
+            elsif take_center(ttt_board) <= 8
+                move = take_center(ttt_board)  
+            elsif take_corner(ttt_board) <= 8
+                move = take_corner(ttt_board)
+            elsif empty_side(ttt_board) <= 8
+                move = empty_side(ttt_board)
+            
+            else
+                move = ttt_board.index("") 
+            
+            end
+            #puts move
+            move
+    end 
     def get_opponent(marker)
             opponent = 'X'
     
@@ -49,29 +72,7 @@ class Unbeatable
        end
         move
     end
-    def get_move(ttt_board)
-        move = 50
-            if  win(ttt_board) <= 8
-                 move = win(ttt_board) 
 
-            elsif  block(ttt_board) <= 8
-                move = block(ttt_board) 
-            elsif block_fork(ttt_board) <= 8
-                move = block_fork(ttt_board)
-            elsif take_center(ttt_board) <= 8
-                move = take_center(ttt_board)  
-            elsif take_corner(ttt_board) <= 8
-                move = take_corner(ttt_board)
-            elsif empty_side(ttt_board) <= 8
-                move = empty_side(ttt_board)
-            
-            else
-                move = ttt_board.index("") 
-            
-            end
-            #puts move
-            move
-    end 
     def win(ttt_board)
         win_block_move(ttt_board, marker)
     end
@@ -130,29 +131,29 @@ move
         fork_positions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[4,1,7],[2,5,8],[0,4,8],[2,4,6]]
 
         fork_spot = []
-        i = []
+        i_of_pos = []
         
             fork_combinations.each_with_index do |forking_line, index|
-                if forking_line.count(player) == 1 && forking_line.count("") == 2
-                    i.push(index)
+                if forking_line.count(player) == 1 && forking_line.count("") == 2 #detects where player (opponent) is and an open space on the board
+                    i_of_pos.push(index) #pushes the position of fork_combinations into an array
                  
                 end
             end
-            p i
-            i.each do |index|
-                fork_spot << fork_positions[index]
+            #p i
+            i_of_pos.each do |index| 
+                fork_spot << fork_positions[index] #index of fork_positions is pushed into array for each of i_of_pos
             end
             
-            fork_spot = fork_spot.flatten.sort
+            fork_spot = fork_spot.flatten.sort #makes fork spot a single array and sorts it in order
     
             intersections = []
             fork_spot.each do |spot|
-                if ttt_board[spot] == ""
-                    intersections.push(spot)
+                if ttt_board[spot] == "" #checks to see if space is open
+                    intersections.push(spot) #pushes open spot(s) into array
                 end
             end
     
-            intersections
+            intersections #returns array of spots
     end
     def block_fork(ttt_board)
         intersections = detect_block_fork(ttt_board, @opponent)
