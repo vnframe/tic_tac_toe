@@ -1,21 +1,24 @@
 This is where I will put the board.
-<table>
+<link rel="stylesheet" href="css/style.css">
+<form method="post" action="/make_a_move">
+<table id="board_table">
 <tr> 
- <td><input class="square_size" type="submit" value="<%board.ttt_board[0]%>" name="spot"> </td>
- <td class="middle"><input class="square_size" type='submit' value='<%=board.ttt_board[1]%>' name='spot'></td>
- <td><input class="square_size" type="submit" value="<%board.ttt_board[2]%>" name="spot"> </td>
+ <td><input class="all_squares" type="submit" value="<%board.ttt_board[0]%>" name="spot"> </td>
+ <td class="middle"><input class="all_squares" type='submit' value='<%=board.ttt_board[1]%>' name='spot'></td>
+ <td><input class="all_squares" type="submit" value="<%board.ttt_board[2]%>" name="spot"> </td>
 
  </tr>
  <tr>
 
- <td><input class="sides" type="submit" value="<%board.ttt_board[3]%>" name="spot"> </td>
- <td class="middle-top-bottom"><input class="square_size" type="submit" value="<%board.ttt_board[4]%>" name="spot"> </td>
- <td><input class="sides" type="submit" value="<%board.ttt_board[5]%>" name="spot"> </td>
+ <td class="sides"><input class="all_squares" type="submit" value="<%board.ttt_board[3]%>" name="spot"> </td>
+ <td class="middle sides"><input class="all_squares" type="submit" value="<%board.ttt_board[4]%>" name="spot"> </td>
+ <td class="sides"><input class="all_squares" type="submit" value="<%board.ttt_board[5]%>" name="spot"> </td>
  </tr>
 <tr> 
- <td><input class="square_size" type="submit" value="<%board.ttt_board[6]%>" name="spot"> </td>
- <td class="middle"><input class="square_size" type='submit' value='<%=board.ttt_board[7]%>' name='spot'></td>
- <td><input class="square_size" type="submit" value="<%board.ttt_board[8]%>" name="spot"> </td>
+ <td><input class="all_squares" type="submit" value="<%board.ttt_board[6]%>" name="spot"> </td>
+ <td class="middle"><input class="all_squares" type='submit' value='<%=board.ttt_board[7]%>' name='spot'></td>
+ <td><input class="all_squares" type="submit" value="<%board.ttt_board[8]%>" name="spot"> </td>
 
  </tr>
  </table>
+ </form>

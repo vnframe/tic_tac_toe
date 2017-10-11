@@ -48,6 +48,15 @@ end
 get "/board" do
     erb :board_page, locals: {player1: session[:player1], player2: session[:player2], active: session[:active].marker, board: session[:board]}
 end
+post "/make_a_move" do
+    move = params[:spot].to_i - 1
+    if session[:board].valid_position?(move)
+        session[:board].update_position(move, session[:active].marker)
+        redirect "/check_board"
+    else
+        redirect "/board"
+    end
+end
 
 get "/move" do 
     player_move = session[:active].get_move(session[:board].ttt_board)
@@ -60,12 +69,17 @@ get "/check_board" do
     if session[:board].winner?(session[:active].marker)
         end_game = "#{session[:active].marker} wins this round!"
         erb :check_over, locals: {board: session[:board], end_game: end_game}
-    elsif session[:board] == full_board?
+    elsif session[:board].full_board? == true
         end_game = "It's a cat's game!"
         erb :check_over, locals: {board: session[:board], end_game: end_game}
     elsif session[:active] == session[:player1]
         session[:active] = session[:player2]
     else
         session[:active] = session[:player1]
-end
+    end
+    if session[:active] == session[:player1] && session[:human1] == "yes" || session[:active] == session[:player2] && session[:human2] == "yes"
+        redirect "/board"
+    else
+        redirect "/move"
+    end
 end
