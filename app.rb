@@ -41,7 +41,7 @@ post "/select" do
     elsif session[:human2] == "yes"
         redirect "/board"
     else 
-        redirect "/move"
+        redirect "/computer_move"
     end
 end
 
@@ -50,7 +50,7 @@ get "/board" do
 end
 post "/make_a_move" do
     move = params[:spot].to_i - 1
-    if session[:board].valid_position?(move)
+    if session[:board].valid_position?(move) == true
         session[:board].update_position(move, session[:active].marker)
         redirect "/check_board"
     else
@@ -58,12 +58,11 @@ post "/make_a_move" do
     end
 end
 
-get "/move" do 
+get "/computer_move" do 
     player_move = session[:active].get_move(session[:board].ttt_board)
     session[:board].update_position(player_move, session[:active].marker)
     redirect '/check_board'
 end
-
 
 get "/check_board" do
     if session[:board].winner?(session[:active].marker)
@@ -80,6 +79,6 @@ get "/check_board" do
     if session[:active] == session[:player1] && session[:human1] == "yes" || session[:active] == session[:player2] && session[:human2] == "yes"
         redirect "/board"
     else
-        redirect "/move"
+        redirect "/computer_move"
     end
 end
