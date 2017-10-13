@@ -2,19 +2,20 @@ require_relative "console_game.rb"
 class Board
     attr_accessor :ttt_board
     def initialize
-        @ttt_board = Array.new(9, '')
+        @ttt_board = *(1..9)
     end
     def update_position(position, marker)
         ttt_board[position] = marker
     end
     def valid_position?(position)
-        if ttt_board[position] == '' #tests to see if any positions are empty
+        if ttt_board[position] != "X" && ttt_board[position] != "O" && position.between?(0,8)
             true
         else
             false
         end
         
     end
+    
     def valid_input?(input)
         
         if input.match(/[xXoO]/)
@@ -24,9 +25,15 @@ class Board
         end
         
     end
+    
     def full_board?
-        ttt_board.count('') == 0
+        if ttt_board.all? {|spot| spot.is_a?(String)}
+             true
+        else
+            false
+        end
     end
+
     def winner?(marker)
         #2D array of winning combos
         winners = [

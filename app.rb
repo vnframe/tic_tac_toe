@@ -18,9 +18,9 @@ post "/select" do
     if session[:player1_style] == 'Human'
         session[:player1] = Human.new('X')
         session[:human1] = "yes"
-    elsif session[:player1_type] == 'Easy'
+    elsif session[:player1_style] == 'Easy'
         session[:player1] = Sequential.new('X')
-    elsif session[:player1_style] == "Medium"
+    elsif session[:player1_style] == 'Medium'
         session[:player1] = Random.new('X')
     elsif session[:player1_style] == 'Unbeatable'
         session[:player1] = Unbeatable.new('X')
@@ -28,30 +28,35 @@ post "/select" do
     if session[:player2_style] == 'Human'
         session[:player2] = Human.new('O')
         session[:human2] = "yes"
-    elsif session[:player2_type] == 'Easy'
+    elsif session[:player2_style] == 'Medium'
+        session[:player2] = Random.new('O')
+        puts "marker is #{session[:player2].marker}"
+    elsif session[:player2_style] == 'Easy'
         session[:player2] = Sequential.new('O')
-    elsif session[:player2_style] == "Medium"
-        session[:player2] = Random.new ('O')
     elsif session[:player2_style] == 'Unbeatable'
         session[:player2] = Unbeatable.new('O')
     end
     session[:active] = session[:player1]
     if session[:human1] == "yes"
         redirect "/board"
-    elsif session[:human2] == "yes"
-        redirect "/board"
+    # elsif session[:human2] == "yes"
+    #     redirect "/board"
     else 
+        puts "THIS is active player from post select #{session[:active].marker}!!!!!!!!!!!!!!!!!!!!"
         redirect "/computer_move"
     end
 end
 
 get "/board" do
+    puts "this is active human player #{session[:active].marker}"
     erb :board_page, locals: {player1: session[:player1], player2: session[:player2], active: session[:active].marker, board: session[:board]}
+
 end
 post "/make_a_move" do
-    move = params[:spot].to_i - 1
-    if session[:board].valid_position?(move) == true
-        session[:board].update_position(move, session[:active].marker)
+    player_move = params[:spot].to_i - 1
+    if session[:board].valid_position?(player_move) == true
+        puts player_move
+        session[:board].update_position(player_move, session[:active].marker)
         redirect "/check_board"
     else
         redirect "/board"
@@ -59,26 +64,36 @@ post "/make_a_move" do
 end
 
 get "/computer_move" do 
+    puts "this is active computer #{session[:active].marker}"
+    puts "at get computer move, #{session[:active]}"
     player_move = session[:active].get_move(session[:board].ttt_board)
+    puts "move is #{player_move}"
+    puts "marker is #{session[:active].marker}"
     session[:board].update_position(player_move, session[:active].marker)
+    
     redirect '/check_board'
 end
 
 get "/check_board" do
     if session[:board].winner?(session[:active].marker)
-        end_game = "#{session[:active].marker} wins this round!"
+        end_game = "#{session[:active].marker} WINS!"
+        puts "WINNNER"
         erb :check_over, locals: {board: session[:board], end_game: end_game}
     elsif session[:board].full_board? == true
         end_game = "It's a cat's game!"
         erb :check_over, locals: {board: session[:board], end_game: end_game}
-    elsif session[:active] == session[:player1]
-        session[:active] = session[:player2]
     else
+        if session[:active] == session[:player1]
+        session[:active] = session[:player2]
+        else
         session[:active] = session[:player1]
-    end
-    if session[:active] == session[:player1] && session[:human1] == "yes" || session[:active] == session[:player2] && session[:human2] == "yes"
+        end
+        if session[:active] == session[:player1] && session[:human1] == "yes" || session[:active] == session[:player2] && session[:human2] == "yes"
         redirect "/board"
     else
+        puts "THIS IS ACTIVE PLAYER FROM check board #{session[:active].marker}"
         redirect "/computer_move"
     end
+    end
+    
 end

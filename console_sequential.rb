@@ -6,7 +6,7 @@ class Sequential
         end
         def get_move(ttt_board)
     
-            ttt_board.index('') #places marker on next open space in array
+            ttt_board.index {|spot| spot.is_a?(Integer)}
         end
     
     end
