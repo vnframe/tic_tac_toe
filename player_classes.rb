@@ -5,7 +5,7 @@ class Player
         def initialize(marker)
             @marker = marker	
         end
-    end
+end
     
     class Human2 < Player
     

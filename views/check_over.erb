@@ -1,1 +1,22 @@
 "Game over?"
+<link rel="stylesheet" href="css/style.css">
+
+<h1 class='title_3'><%=end_game%></h1>
+
+<table id="table_end">
+	<tr>
+		<td><div class="win_board"><%=board.ttt_board[0]%></div></td>
+		<td class="middle_columns"><div class="win_board"><%=board.ttt_board[1]%></div></td>
+		<td><div class="win_board"><%=board.ttt_board[2]%></div></td>
+	</tr>
+	<tr>
+		<td class="up_down"><div class="win_board"><%=board.ttt_board[3]%></div></td>
+		<td class="middle_columns up_down"><div class="win_board"><%=board.ttt_board[4]%></div></td>
+		<td class="up_down"><div class="win_board"><%=board.ttt_board[5]%></div></td>
+	</tr>
+	<tr>
+		<td><div class="win_board"><%=board.ttt_board[6]%></div></td>
+		<td class="middle_columns"><div class="win_board"><%=board.ttt_board[7]%></div></td>
+		<td><div class="win_board"><%=board.ttt_board[8]%></div></td>
+	</tr>
+</table>

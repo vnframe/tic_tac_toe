@@ -94,7 +94,7 @@ get "/check_board" do
     else
         puts "THIS IS ACTIVE PLAYER FROM check board #{session[:active].marker}"
         redirect "/computer_move"
-    end
+        end
     end
     
 end

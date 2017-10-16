@@ -24,3 +24,30 @@
     border-left: solid black;
     border-right: solid black;
 }
+
+#table_end {
+    margin-right: auto;
+    margin-top: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+    width: 600px;
+    height: 600px;
+}
+
+.win_board {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 4.3em;
+    background-color: lightgray;
+}
+
+.middle_columns {
+    border-left: solid black;
+    border-right: solid black;
+}
+
+.up_down {
+    border-top: solid black;
+    border-bottom: solid black;
+}

@@ -61,9 +61,9 @@ class Unbeatable
         move = 56
         possible_moves.each_with_index do |winning_line, index_of_array|
             #p "#{wins} are here"
-            if winning_line.count(player) == 2 && winning_line.count('') == 1
+            if winning_line.count(player) == 2 && winning_line.count { |space| space.is_a?(Integer) }  == 1
                 p index_of_array
-                winner = winning_line.index('')
+                winner = winning_line.index {|space| space.is_a?(Integer)}
                 move = possible_combos[index_of_array][winner]
             else 
                 move
@@ -80,20 +80,20 @@ class Unbeatable
         win_block_move(ttt_board, opponent)
     end
     def take_center(ttt_board)
-        if ttt_board[4] == ''
+        if ttt_board[4].is_a?(Integer)
             move = 4
         else
             move = 56
         end
     end
     def take_corner(ttt_board)
-        if ttt_board[0] == ''
+        if ttt_board[0].is_a?(Integer)
             move = 0
-        elsif ttt_board[2] == ''
+        elsif ttt_board[2].is_a?(Integer)
             move = 2
-        elsif ttt_board[6] == ''
+        elsif ttt_board[6].is_a?(Integer)
             move = 6
-        elsif ttt_board[8] == ''
+        elsif ttt_board[8].is_a?(Integer)
             move = 8
         else 
             move = 56
@@ -104,7 +104,7 @@ class Unbeatable
 		empty = []
 
 		sides.each do |pos|
-			if ttt_board[pos] == ''
+			if ttt_board[pos].is_a?(Integer)
 				empty << pos
 			end
 		end
@@ -134,7 +134,7 @@ move
         i_of_pos = []
         
             fork_combinations.each_with_index do |forking_line, index|
-                if forking_line.count(player) == 1 && forking_line.count("") == 2 #detects where player (opponent) is and an open space on the board
+                if forking_line.count(player) == 1 && forking_line.count { |space| space.is_a?(Integer) } == 2 #detects where player (opponent) is and an open space on the board
                     i_of_pos.push(index) #pushes the position of fork_combinations into an array
                  
                 end
@@ -158,9 +158,9 @@ move
     def block_fork(ttt_board)
         intersections = detect_block_fork(ttt_board, @opponent)
 
-        if ttt_board == ["", "", opponent, "", marker, "", opponent, "", ""]
+        if ttt_board == [1, 2, opponent, 4, marker, 6, opponent, 8, 9]
                         move = 3
-        elsif ttt_board == [opponent, " ", " ", " ", marker, " ", " ", " ", opponent]
+        elsif ttt_board == [opponent, 2, 3, 4, marker, 5, 6, 7, opponent]
             move = 3
         elsif intersections.detect { |match| intersections.count(match) > 1 } == nil
             move = 56
