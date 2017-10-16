@@ -1,8 +1,24 @@
+@font-face {
+    font-family: 'chawpregular';
+    src: url('chawp.woff2') format('woff2'), url('chawp.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'travellingregular';
+    src: url('travelling-webfont.woff2') format('woff2'), url('travelling-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .all_squares {
     height: 100%;
     width: 100%;
     border: none;
-    font-size: 4.3em;
+    font-family: 'Travelling', 'travellingregular';
+    font-size: 7.3em;
+    color: red;
     background-color: lightgray;
 }
 
@@ -38,8 +54,11 @@
     height: 100%;
     width: 100%;
     border: none;
-    font-size: 4.3em;
-    background-color: lightgray;
+    font-family: 'Travelling', 'travellingregular';
+    font-size: 7.3em;
+    color: red;
+    text-align: center;
+    font- background-color: lightgray;
 }
 
 .middle_columns {
