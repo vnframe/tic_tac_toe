@@ -12,6 +12,14 @@
     font-style: normal;
 }
 
+#welcome {
+    height: 35px;
+    font-size: 20px;
+    font-family: 'Lato', serif;
+    color: whitesmoke;
+    background-color: darkred;
+}
+
 .all_squares {
     height: 100%;
     width: 100%;
