@@ -1,8 +1,9 @@
 require "sinatra"
 require_relative "tictactoe.rb"
-require_relative "console_human.rb"
-require_relative "console_sequential.rb"
-require_relative "random.rb"
+# require_relative "console_human.rb"
+# require_relative "console_sequential.rb"
+# require_relative "random.rb"
+require_relative "player_classes.rb"
 require_relative "unbeatable.rb"
 enable :sessions
 
@@ -16,23 +17,23 @@ post "/select" do
     session[:human1] = "no"
     session[:human2] = "no"
     if session[:player1_style] == 'Human'
-        session[:player1] = Human.new('X')
+        session[:player1] = Human2.new('X')
         session[:human1] = "yes"
     elsif session[:player1_style] == 'Easy'
-        session[:player1] = Sequential.new('X')
+        session[:player1] = Sequential2.new('X')
     elsif session[:player1_style] == 'Medium'
-        session[:player1] = Random.new('X')
+        session[:player1] = Random2.new('X')
     elsif session[:player1_style] == 'Unbeatable'
         session[:player1] = Unbeatable.new('X')
     end
     if session[:player2_style] == 'Human'
-        session[:player2] = Human.new('O')
+        session[:player2] = Human2.new('O')
         session[:human2] = "yes"
     elsif session[:player2_style] == 'Medium'
-        session[:player2] = Random.new('O')
+        session[:player2] = Random2.new('O')
         puts "marker is #{session[:player2].marker}"
     elsif session[:player2_style] == 'Easy'
-        session[:player2] = Sequential.new('O')
+        session[:player2] = Sequential2.new('O')
     elsif session[:player2_style] == 'Unbeatable'
         session[:player2] = Unbeatable.new('O')
     end
