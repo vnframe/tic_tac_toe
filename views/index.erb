@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="css/style.css">
 
+
 <center><div id='welcome'>Welcome to tic-tac-toe! Please select players</div> </center>
 <form action = "select"  method = "post">
 <center>
@@ -11,15 +12,20 @@
 </tr>
     <tr>
         <td>
-            <select name='player1'>
-				    <option value='Human'>Human - X</option>
+            <select required name='player1' onchange='generate(this.options[selectedIndex].value)' >
+
+                    <option value="" >Select your option</option>
+				    <option value='Human' >Human - X</option>
 				    <option value='Easy'>Easy - X</option>
 				    <option value='Medium'>Medium - X</option>
 				    <option value='Unbeatable'>Unbeatable - X</option>
             </select>
+            
         </td>
+        <div id="enterName"></div>
         <td>
-            <select name='player2'>
+            <select required name='player2'placeholder="player 2">
+                    <option value="" >Select your option</option>
 				    <option value='Human'>Human - O</option>
 				    <option value='Easy'>Easy - O</option>
 				    <option value='Medium'>Medium - O</option>
@@ -32,3 +38,15 @@
     <input type = "submit">
     <center>
 <form>
+<script>
+    function generate(name) {
+        if(name="Human")document.getElementById("player1"){
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "name";
+            input.id = "player_name";
+            input.required = true;
+            document.getElementById("enterName").appendChild(input).value;
+        }
+    }
+    </script>
