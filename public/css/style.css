@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'chawpregular';
-    src: url('../chawp.woff2') format('woff2'), url('../chawp.woff') format('woff');
+    src: url('chawp.woff2') format('woff2'), url('chawp.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'travellingregular';
-    src: url('../travelling-webfont.woff2') format('woff2'), url('../travelling-webfont.woff') format('woff');
+    src: url('travelling-webfont.woff2') format('woff2'), url('travelling-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
