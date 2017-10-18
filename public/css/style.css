@@ -12,12 +12,17 @@
     font-style: normal;
 }
 
+body {
+    background-color: darkolivegreen;
+}
+
 #welcome {
     height: 35px;
-    font-size: 20px;
-    font-family: 'Lato', serif;
+    font-size: 30px;
+    font-family: 'chawp', 'chawpregular';
+    font-weight: bold;
     color: whitesmoke;
-    background-color: darkred;
+    background-color: darkolivegreen;
 }
 
 .all_squares {
@@ -26,8 +31,8 @@
     border: none;
     font-family: 'Travelling', 'travellingregular';
     font-size: 7.3em;
-    color: red;
-    background-color: lightgray;
+    color: white;
+    background-color: darkolivegreen;
 }
 
 #board_table {
@@ -40,13 +45,13 @@
 }
 
 .sides {
-    border-top: solid black;
-    border-bottom: solid black;
+    border-top: solid white;
+    border-bottom: solid white;
 }
 
 .middle {
-    border-left: solid black;
-    border-right: solid black;
+    border-left: solid white;
+    border-right: solid white;
 }
 
 #table_end {
@@ -64,17 +69,23 @@
     border: none;
     font-family: 'Travelling', 'travellingregular';
     font-size: 7.3em;
-    color: red;
+    color: white;
     text-align: center;
-    font- background-color: lightgray;
+    background-color: darkolivegreen;
 }
 
 .middle_columns {
-    border-left: solid black;
-    border-right: solid black;
+    border-left: solid white;
+    border-right: solid white;
 }
 
 .up_down {
-    border-top: solid black;
-    border-bottom: solid black;
+    border-top: solid white;
+    border-bottom: solid white;
+}
+
+#players {
+    color: white;
+    font-family: 'Travelling', 'travellingregular';
+    font-size: 25px;
 }

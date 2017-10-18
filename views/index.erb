@@ -6,7 +6,7 @@
 <center>
 <table>
 
-<tr>
+<tr id='players'>
     <td>Player 1</td>
     <td>Player 2</td>
 </tr>
@@ -24,7 +24,7 @@
         </td>
         <div id="enterName"></div>
         <td>
-            <select required name='player2'placeholder="player 2">
+            <select required name='player2' onchange='generate2(this.options[selectedIndex].value)'>
                     <option value="" >Select your option</option>
 				    <option value='Human'>Human - O</option>
 				    <option value='Easy'>Easy - O</option>
@@ -33,20 +33,21 @@
             </select>
             
             </td>
+            <div id="enterName2">
         </tr>
     </table>
     <input type = "submit">
     <center>
 <form>
 <script>
-    function generate(name) {
-        if(name="Human")document.getElementById("player1"){
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = "name";
-            input.id = "player_name";
-            input.required = true;
-            document.getElementById("enterName").appendChild(input).value;
+    function generate(player_type_choice) {
+        if (player_type_choice == 'Human')document.getElementById('enterName').innerHTML = 'Enter Player One Name: <input type = "text" name = "Human" />';
+            
+        else document.getElementById('enterName').innerHTML = '';
         }
-    }
+    function generate2(player_type_choice) {
+        if (player_type_choice == 'Human')document.getElementById('enterName2').innerHTML = 'Enter Player Two Name: <input type = "text" name = "Human" />';
+            
+        else document.getElementById('enterName2').innerHTML = '';
+        }
     </script>
