@@ -22,7 +22,8 @@
             </select>
             
         </td>
-        <div id="enterName"></div>
+        <div class="names" id="enterName"></div>
+        <div class="names" id="enterName2">
         <td>
             <select required name='player2' onchange='generate2(this.options[selectedIndex].value)'>
                     <option value="" >Select your option</option>
@@ -33,7 +34,7 @@
             </select>
             
             </td>
-            <div id="enterName2">
+            
         </tr>
     </table>
     <input type = "submit">
@@ -41,7 +42,7 @@
 <form>
 <script>
     function generate(player_type_choice) {
-        if (player_type_choice == 'Human')document.getElementById('enterName').innerHTML = 'Enter Player One Name: <input type = "text" name = "human_name" />';
+        if (player_type_choice == 'Human')document.getElementById('enterName').innerHTML = 'Enter Player One Name: <input type = "text" name = "human_name"/>';
             
         else document.getElementById('enterName').innerHTML = '';
         }

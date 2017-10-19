@@ -17,7 +17,7 @@ enable :sessions
 # }
 # db = PG::Connection.new(db_params)
 get "/" do
-    session[:scoreboard] = db.exec("Select * From login_info")
+    #session[:scoreboard] = db.exec("Select * From login_info")
     session[:board] = Board.new
     erb :index, locals: {board: session[:board]}
 end
@@ -53,7 +53,7 @@ post "/select" do
     end
     session[:active] = session[:player1]
     if session[:human1] == "yes"
-        db.exec("INSERT INTO tictactoe_data(player1, player2) VALUES('#{session[:human_name_one]}', '#{session[:player_2]}')");
+       # db.exec("INSERT INTO tictactoe_data(player1, player2) VALUES('#{session[:human_name_one]}', '#{session[:player_2]}')");
         redirect "/board"
     # elsif session[:human2] == "yes"
     #     redirect "/board"

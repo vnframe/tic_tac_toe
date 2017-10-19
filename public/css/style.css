@@ -17,12 +17,15 @@ body {
 }
 
 #welcome {
-    height: 35px;
+    height: 40px;
+    padding-top: 10px;
     font-size: 30px;
     font-family: 'chawp', 'chawpregular';
     font-weight: bold;
     color: whitesmoke;
     background-color: darkolivegreen;
+    border-top: dashed white;
+    border-bottom: dashed white;
 }
 
 .all_squares {
@@ -87,5 +90,17 @@ body {
 #players {
     color: white;
     font-family: 'Travelling', 'travellingregular';
-    font-size: 25px;
+    font-size: 30px;
+}
+
+#title_3 {
+    color: white;
+    font-family: 'Chawp', 'chawpregular';
+    font-size: 40px;
+}
+
+.names {
+    color: white;
+    font-family: 'Travelling', 'travellingregular';
+    font-size: 20px;
 }
