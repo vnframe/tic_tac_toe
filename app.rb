@@ -18,7 +18,7 @@ db_params = {
 
 db = PG::Connection.new(db_params)
 get "/" do
-    session[:scoreboard] = db.exec("Select * From tictactoe_data")
+    #session[:scoreboard] = db.exec("Select * From tictactoe_data")
     session[:board] = Board.new
     erb :index, locals: {board: session[:board]}
 end
