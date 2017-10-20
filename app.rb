@@ -21,7 +21,7 @@ db_params = {
 get "/" do
     #scoreboard = db.exec("Select * From tictactoe_data")
     session[:board] = Board.new
-    erb :index, locals: {board: session[:board], scoreboard: scoreboard}
+    erb :index, locals: {board: session[:board]} #scoreboard: scoreboard
 end
 post "/select" do
     session[:player1_style] = params[:player1]
