@@ -14,6 +14,7 @@
 
 body {
     background-color: darkolivegreen;
+    margin-bottom: 60px;
 }
 
 #welcome {
@@ -26,7 +27,6 @@ body {
     background-color: darkolivegreen;
     border-top: dashed white;
     border-bottom: dashed white;
-    border-style:
 }
 
 .all_squares {
@@ -105,3 +105,21 @@ body {
     font-family: 'Travelling', 'travellingregular';
     font-size: 20px;
 }
+
+#myTable {
+    color: white;
+    border: solid white;
+    /* height: 300px; */
+    width: 250px;
+    /* padding-bottom: 200px; */
+    position: relative;
+    bottom: 400px;
+}
+
+
+/* #table {
+    top: 80px;
+    height: 80px;
+    padding-bottom: 200px;
+    background-color: darkgreen;
+} */

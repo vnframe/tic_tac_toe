@@ -19,9 +19,9 @@ db_params = {
 
 db = PG::Connection.new(db_params)
 get "/" do
-    scoreboard = db.exec("Select * From tictactoe_data")
+    #scoreboard = db.exec("Select * From tictactoe_data")
     session[:board] = Board.new
-    erb :index, locals: {board: session[:board], scoreboard: scoreboard}
+    erb :index, locals: {board: session[:board]}#scoreboard: scoreboard
 end
 post "/select" do
     session[:player1_style] = params[:player1]
@@ -59,7 +59,7 @@ post "/select" do
     end
     session[:active] = session[:player1]
     if session[:human1] == "yes"
-        db.exec("INSERT INTO tictactoe_data(player1_data, player2_data) VALUES('#{session[:human_name_one]}', '#{session[:human_name_two]}')");
+       
         redirect "/board"
     # elsif session[:human2] == "yes"
     #     redirect "/board"
@@ -97,12 +97,15 @@ get "/computer_move" do
 end
 
 get "/check_board" do
+    win_time = Time.new
     if session[:board].winner?(session[:active].marker)
         end_game = "#{session[:active].marker} WINS!"
         puts "WINNNER"
+        db.exec("INSERT INTO tictactoe_data(player1_data, player2_data, winner, date) VALUES('#{session[:human_name_one]}', '#{session[:human_name_two]}', '#{end_game}', '#{win_time.inspect}')");
         erb :check_over, locals: {board: session[:board], end_game: end_game}
     elsif session[:board].full_board? == true
-        end_game = "It's a cat's game!"
+        end_game = "Its a cats game!"
+        db.exec("INSERT INTO tictactoe_data(player1_data, player2_data, winner, date) VALUES('#{session[:human_name_one]}', '#{session[:human_name_two]}', '#{end_game}', '#{win_time.inspect}')");
         erb :check_over, locals: {board: session[:board], end_game: end_game}
     else
         if session[:active] == session[:player1]
