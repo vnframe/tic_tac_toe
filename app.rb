@@ -54,7 +54,7 @@ post "/select" do
     end
     session[:active] = session[:player1]
     if session[:human1] == "yes"
-        db.exec("INSERT INTO tictactoe_data(player1_data, player2_data) VALUES('#{session[:human_name_one]}', '#{session[:player_2]}')");
+        db.exec("INSERT INTO tictactoe_data(player1_data, player2_data) VALUES('#{session[:human_name_one]}', '#{session[:human_name_two]}')");
         redirect "/board"
     # elsif session[:human2] == "yes"
     #     redirect "/board"
