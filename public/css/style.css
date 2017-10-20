@@ -12,6 +12,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'baby_foxregular';
+    src: url('./fonts/babyfox-webfont.woff2') format('woff2'), url('./fonts/babyfox-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'phitradesign_handwritten_thRg';
+    src: url('./fonts/phitradesign_handwritten_thin-webfont.woff2') format('woff2'), url('./fonts/phitradesign_handwritten_thin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-color: darkolivegreen;
     margin-bottom: 60px;
@@ -90,7 +104,7 @@ body {
 
 #players {
     color: white;
-    font-family: 'Travelling', 'travellingregular';
+    font-family: 'phitradesign Handwritten Thin', 'phitradesign_handwritten_thRg';
     font-size: 30px;
 }
 
@@ -102,7 +116,7 @@ body {
 
 .names {
     color: white;
-    font-family: 'Travelling', 'travellingregular';
+    font-family: 'Baby Fox', 'baby_foxregular';
     font-size: 20px;
 }
 
@@ -113,7 +127,10 @@ body {
     width: 250px;
     /* padding-bottom: 200px; */
     position: relative;
-    bottom: 400px;
+    bottom: 560px;
+    font-family: 'phitradesign Handwritten Thin', 'phitradesign_handwritten_thRg';
+    font-size: 20px;
+    font-weight: bold;
 }
 
 
