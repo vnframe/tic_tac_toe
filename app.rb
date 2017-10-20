@@ -7,17 +7,18 @@ require_relative "tictactoe.rb"
 require_relative "player_classes.rb"
 require_relative "unbeatable.rb"
 enable :sessions
-# load './local_env.rb' if File.exists?('./local_env.rb')
-# db_params = {
-#     host: ENV['host'],
-#     port: ENV['port'],
-#     dbname: ENV['db_name'],
-#     user: ENV['user'],
-#     password: ENV['password']
-# }
-# db = PG::Connection.new(db_params)
+load './local_env.rb' if File.exists?('./local_env.rb')
+db_params = {
+    host: ENV['host'],
+    port: ENV['port'],
+    dbname: ENV['dbname'],
+    user: ENV['user'],
+    password: ENV['password']
+}
+
+db = PG::Connection.new(db_params)
 get "/" do
-    #session[:scoreboard] = db.exec("Select * From login_info")
+    session[:scoreboard] = db.exec("Select * From tictactoe_data")
     session[:board] = Board.new
     erb :index, locals: {board: session[:board]}
 end
@@ -29,9 +30,9 @@ post "/select" do
     if session[:player1_style] == 'Human'
         session[:player1] = Human2.new('X')
         session[:human1] = "yes"
-        # session[:human_name_one] = params[:human_name]
+         session[:human_name_one] = params[:human_name]
     elsif session[:player1_style] == 'Easy'
-        # session[:human_name_one] = "Easy"
+         session[:human_name_one] = "Easy"
         session[:player1] = Sequential2.new('X')
     elsif session[:player1_style] == 'Medium'
         
@@ -42,7 +43,7 @@ post "/select" do
     if session[:player2_style] == 'Human'
         session[:player2] = Human2.new('O')
         session[:human2] = "yes"
-        # session[:human_name_two] = params[:human_name_2]
+         session[:human_name_two] = params[:human_name_2]
     elsif session[:player2_style] == 'Medium'
         session[:player2] = Random2.new('O')
         puts "marker is #{session[:player2].marker}"
@@ -53,7 +54,7 @@ post "/select" do
     end
     session[:active] = session[:player1]
     if session[:human1] == "yes"
-       # db.exec("INSERT INTO tictactoe_data(player1, player2) VALUES('#{session[:human_name_one]}', '#{session[:player_2]}')");
+        db.exec("INSERT INTO tictactoe_data(player1_data, player2_data) VALUES('#{session[:human_name_one]}', '#{session[:player_2]}')");
         redirect "/board"
     # elsif session[:human2] == "yes"
     #     redirect "/board"
