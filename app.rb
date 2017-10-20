@@ -1,6 +1,7 @@
 require "sinatra"
 require "pg"
 require_relative "tictactoe.rb"
+require "aws-sdk"
 # require_relative "console_human.rb"
 # require_relative "console_sequential.rb"
 # require_relative "random.rb"
