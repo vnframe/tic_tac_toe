@@ -40,6 +40,22 @@
     <input type = "submit">
     <center>
 <form>
+
+<div id = "table">
+<table id="myTable">
+  <tr class="header">
+    <th style="width:40%;">Player 1</th>
+    <th style="width:40%;">Player 2</th>
+  </tr>
+<%scoreboard.each do |value|%>
+<tr>
+<br><td><%=value['player1_data']%> </td>
+<td><%=value['player2_data']%> </td> <br>
+</tr>
+<%end%>
+</table>
+</div>
+
 <script>
     function generate(player_type_choice) {
         if (player_type_choice == 'Human')document.getElementById('enterName').innerHTML = 'Enter Player One Name: <input type = "text" name = "human_name"/>';

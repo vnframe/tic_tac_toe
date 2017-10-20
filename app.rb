@@ -19,9 +19,9 @@ db_params = {
 
 db = PG::Connection.new(db_params)
 get "/" do
-    #session[:scoreboard] = db.exec("Select * From tictactoe_data")
+    scoreboard = db.exec("Select * From tictactoe_data")
     session[:board] = Board.new
-    erb :index, locals: {board: session[:board]}
+    erb :index, locals: {board: session[:board], scoreboard: scoreboard}
 end
 post "/select" do
     session[:player1_style] = params[:player1]
@@ -36,21 +36,25 @@ post "/select" do
          session[:human_name_one] = "Easy"
         session[:player1] = Sequential2.new('X')
     elsif session[:player1_style] == 'Medium'
-        
+        session[:human_name_one] = "Medium"
         session[:player1] = Random2.new('X')
     elsif session[:player1_style] == 'Unbeatable'
         session[:player1] = Unbeatable.new('X')
+        session[:human_name_one] = "Unbeatable"
     end
     if session[:player2_style] == 'Human'
         session[:player2] = Human2.new('O')
         session[:human2] = "yes"
          session[:human_name_two] = params[:human_name_2]
     elsif session[:player2_style] == 'Medium'
+        session[:human_name_two] = 'Medium'
         session[:player2] = Random2.new('O')
         puts "marker is #{session[:player2].marker}"
     elsif session[:player2_style] == 'Easy'
+        session[:human_name_two] = 'Easy'
         session[:player2] = Sequential2.new('O')
     elsif session[:player2_style] == 'Unbeatable'
+        session[:human_name_two] = 'Unbeatable'
         session[:player2] = Unbeatable.new('O')
     end
     session[:active] = session[:player1]
