@@ -42,24 +42,7 @@
     <center>
 <form>
 
-<div id = "table">
-    <table id="myTable">
-    <tr class="header">
-        <th style="width:40%;">X</th>
-        <th style="width:40%;">O</th>
-        <th style="width:40%;">Winner</th>
-        <th style="width:40%;">Date/Time</th>
-    </tr>
-<%scoreboard.each do |value|%>
-    <tr>
-        <br><td><%=value['player1_data']%> </td>
-        <td><%=value['player2_data']%> </td> <br>
-        <td><%=value['winner']%> </td> <br>
-        <td><%=value['date']%> </td> <br>
-    </tr>
-<%end%>
-    </table>
-</div>
+
 </body>
 <script>
     function generate(player_type_choice) {
