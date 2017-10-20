@@ -127,10 +127,27 @@ body {
     width: 250px;
     /* padding-bottom: 200px; */
     position: relative;
+    top: 40px;
     bottom: 560px;
     font-family: 'phitradesign Handwritten Thin', 'phitradesign_handwritten_thRg';
     font-size: 20px;
     font-weight: bold;
+}
+
+#play_again {
+    position: relative;
+    font-family: 'Chawp', 'chawpregular';
+    font-size: 50px;
+    padding-top: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    background-color: rgb(41, 71, 41);
 }
 
 
