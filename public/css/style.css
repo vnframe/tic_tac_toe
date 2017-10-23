@@ -125,11 +125,9 @@ body {
     border: solid white;
     /* height: 300px; */
     width: 250px;
-    /* padding-bottom: 200px; */
+    left: 33.2%;
+    top: 230px;
     position: absolute;
-    top: 200px;
-    bottom: 560px;
-    left: 21em;
     font-family: 'phitradesign Handwritten Thin', 'phitradesign_handwritten_thRg';
     font-size: 20px;
     font-weight: bold;
